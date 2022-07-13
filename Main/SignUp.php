@@ -9,7 +9,36 @@ require_once "header.php";
             <div class="row justify-content-center">
               <div class="col-md-8 col-lg-6 col-xl-4 offset-xl">
 
+<?php
 
+switch($_GET["error"]) {
+
+  case "emptyInput":
+    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Fill in all fields!</p>";
+    break;
+
+  case "invalidusername":
+    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Choose a valid username!</p>";
+    break;
+
+  case "invalidemail":
+    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Choose a valid email!</p>";
+    break;
+
+  case "passworddontmatch":
+    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Passwords doesn't match!</p>";
+    break;
+
+  case "usernameoremailalreadyexist":
+    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Username or email already exist!</p>";
+    break;
+
+  case "none":
+    echo "<p class = 'text-primary text-center fw-bold mx-3 mb-0'>You have successfully signed up</p>";
+    break;
+}
+
+?>
                 <form action="../Includes/signup.inc.php" method="POST">
                   
                 <div class="divider d-flex align-items-center my-4">

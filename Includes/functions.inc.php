@@ -1,5 +1,6 @@
 <?php
 
+// functions for user Signup
 function emptyInputSignup ($username, $email, $password, $pwdrepeat) {
     if (empty($username) || empty($email) || empty($password) || empty($pwdrepeat)) {
         $result = true;
@@ -77,6 +78,29 @@ function createUser($conn, $username, $email, $password)  {
     header("location: ../Main/SignUp.php?error=none");
     exit(); 
 }
+
+
+// Functions for user Login
+
+function emptyInputlogin ($username, $password) {
+    if (empty($username) || empty($password) ) {
+        $result = true;
+    } 
+    else {
+        $result = false;
+    }
+    return $result;
+}
+
+function wrongUsername($username) {
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+
 
 
  

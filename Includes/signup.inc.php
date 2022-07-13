@@ -32,7 +32,7 @@ if(isset($_POST["submit"])) {
     }
 
     if(usernameExist($conn, $username, $email) !== false) {
-        header("location: ../Main/SignUp.php?error=usernametaken");
+        header("location: ../Main/SignUp.php?error=usernameoremailalreadyexist");
         exit(); 
     }
 
