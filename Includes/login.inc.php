@@ -19,11 +19,6 @@ if(isset($_POST["submit"])) {
         exit();
     }
 
-    if(incorrectPassword($password) !== false) {
-        header("location: ../Main/Login.php?error=incorrectpassword");
-        exit();
-    }
-
     loginUser($conn, $username, $password,);
 
 }else {

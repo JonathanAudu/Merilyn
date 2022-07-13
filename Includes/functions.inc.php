@@ -101,6 +101,4 @@ function wrongUsername($username) {
     return $result;
 }
 
-
-
- 
+function 
