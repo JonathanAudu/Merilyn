@@ -10,6 +10,32 @@ require_once "header.php";
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl">
+    
+      <?php
+
+
+if (isset($_GET["error"])) {
+  switch ($_GET["error"]) {
+
+    case "emptyInput":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Fill in all fields!</p>";
+      break;
+
+    case "wrongpassword":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Incorrect Password!</p>";
+      break;
+
+    case "wrongusername":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Incorrect Username!</p>";
+      break;
+
+    case "none":
+      echo "<p class = 'text-primary text-center fw-bold mx-3 mb-0'>Successfull</p>";
+      break;
+  }
+}
+
+?>
         <form action="../Includes/login.inc.php" method="POST">
 
           <div class="divider d-flex align-items-center my-4">
@@ -18,16 +44,18 @@ require_once "header.php";
 
           <!-- Email input -->
           <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Username</label>
             <input type="text" name="username" class="form-control form-control-lg"
               placeholder="Enter your username" />
-            <label class="form-label" for="form3Example3">Username</label>
+           
           </div>
 
           <!-- Password input -->
-          <div class="form-outline mb-3">
+          <div class="form-outline mb-3"> 
+            <label class="form-label" for="form3Example4">Password</label>
             <input type="password" name="password" class="form-control form-control-lg"
               placeholder="Enter password" />
-            <label class="form-label" for="form3Example4">Password</label>
+           
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">

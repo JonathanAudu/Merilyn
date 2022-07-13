@@ -11,31 +11,34 @@ require_once "header.php";
 
 <?php
 
-switch($_GET["error"]) {
 
-  case "emptyInput":
-    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Fill in all fields!</p>";
-    break;
+if (isset($_GET["error"])) {
+  switch ($_GET["error"]) {
 
-  case "invalidusername":
-    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Choose a valid username!</p>";
-    break;
+    case "emptyInput":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Fill in all fields!</p>";
+      break;
 
-  case "invalidemail":
-    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Choose a valid email!</p>";
-    break;
+    case "invalidusername":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Choose a valid username!</p>";
+      break;
 
-  case "passworddontmatch":
-    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Passwords doesn't match!</p>";
-    break;
+    case "invalidemail":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Choose a valid email!</p>";
+      break;
 
-  case "usernameoremailalreadyexist":
-    echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Username or email already exist!</p>";
-    break;
+    case "passworddontmatch":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Passwords doesn't match!</p>";
+      break;
 
-  case "none":
-    echo "<p class = 'text-primary text-center fw-bold mx-3 mb-0'>You have successfully signed up</p>";
-    break;
+    case "usernameoremailalreadyexist":
+      echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Username or email already exist!</p>";
+      break;
+
+    case "none":
+      echo "<p class = 'text-primary text-center fw-bold mx-3 mb-0'>You have successfully signed up</p>";
+      break;
+  }
 }
 
 ?>
@@ -68,6 +71,8 @@ switch($_GET["error"]) {
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <button type="submit" name="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; 
                     padding-right: 2.5rem;">SignUp</button>
+                      <p class="small fw-bold mt-2 pt-1 mb-0">Have an account already? <a href="Login.php"
+                class="link-primary">Login</a></p>
                 </div>
 
                 </form>

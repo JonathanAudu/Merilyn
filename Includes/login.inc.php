@@ -14,14 +14,23 @@ if(isset($_POST["submit"])) {
         exit(); 
     }
 
-    if(wrongUsername($username) !== false) {
+    if(checkUsername( $conn, $username) !== false) {
+
+       if (checkPassword($conn, $password) !== false) {
+
+            loginUser($conn, $username, $password);
+
+       } else {
+        header("location: ../Main/Login.php?error=wrongpassword");
+        exit();
+       }
+    } else {
         header("location: ../Main/Login.php?error=wrongusername");
         exit();
     }
 
-    loginUser($conn, $username, $password,);
+    
+    }
 
-}else {
-    header("location: ../Main/Login.php");
-    exit();
-}
+    
+

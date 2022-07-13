@@ -92,13 +92,49 @@ function emptyInputlogin ($username, $password) {
     return $result;
 }
 
-function wrongUsername($username) {
-    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+function checkUsername($conn,$username) {
+    $sql = "SELECT * FROM users WHERE Usernames = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_fetch_assoc($resultData)) {
         $result = true;
-    } else {
+    } 
+    else {
+        $result = false;
+    }
+    return $result;
+    }
+
+function checkPassword($conn,$password) {
+    $sql = "SELECT * FROM users WHERE `Password` = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+
+    mysqli_stmt_bind_param($stmt, "s", $password);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+    
+    if (mysqli_fetch_assoc($resultData)) {
+        $result = true;
+    } 
+    else {
         $result = false;
     }
     return $result;
 }
 
-function 
+function loginUser($conn, $username, $password) {
+    session_start();
+    $_SESSION["Usernames"] = $username;    
+    $_SESSION["Password"] = $password;  
+    header("location: ../Main/index.php");
+    exit();  
+
+}

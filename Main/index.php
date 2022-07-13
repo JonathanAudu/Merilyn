@@ -6,6 +6,13 @@ require_once "header.php";
   <section id="hero" class="hero d-flex align-items-center">
 
     <div class="container">
+    <?php
+  if (isset($_SESSION["Usernames"])) {
+
+    echo "<h1 data-aos='fade-up'>Welcome " . $_SESSION["Usernames"] . "</h1> ";
+  } 
+ 
+?>
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
           <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
