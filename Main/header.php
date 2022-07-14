@@ -60,11 +60,10 @@ session_start();
         <ul>
           <li><h2><a class="nav-link scrollto active" href="index.php">HOME</a></h2></li>
           <li><h2><a class="nav-link scrollto" href="#about">ABOUT</a></h2></li>
-          <li><h2><a class="nav-link scrollto" href="#services">SERVICES</a></h2></li>
 <?php
   if (isset($_SESSION["Usernames"])) {
 
-    echo "<li><h2><a href= 'profile.php' >PROFILE PAGE</a></h2></li>";
+    echo "<li><h2><a href= 'profilepage.php' >" . strtoupper($_SESSION["Usernames"]) . "</a></h2></li>";
     echo "<li><h2><a href= 'logout.php' >LOG OUT</a></h2></li>";
   } 
   else {
@@ -73,30 +72,7 @@ session_start();
     echo "<li><h2><a href= 'Login.php' >LOG IN</a></h2></li>";
   }
 
-
 ?>
-          <!-- <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li> -->
-          <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
-          <!-- <li><a href="blog.html">Blog</a></li> -->
-          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> -->
-          <li><h2><a class="nav-link scrollto" href="#contact">CONTACT</a></h2></li>
-          <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
