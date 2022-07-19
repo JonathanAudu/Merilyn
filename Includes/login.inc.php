@@ -7,7 +7,7 @@ if(isset($_POST["submit"])) {
    
 
     require_once "dbh.inc.php";
-    require_once "functions.inc.php";
+    require_once "auth.inc.php";
 
     if(emptyInputlogin ($username, $password,) !== false) {
         header("location: ../Main/Login.php?error=emptyInput");

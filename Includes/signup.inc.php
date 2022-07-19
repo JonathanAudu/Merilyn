@@ -8,7 +8,7 @@ if(isset($_POST["submit"])) {
     $pwdrepeat = $_POST["repeatpwd"];
 
     require_once "dbh.inc.php";
-    require_once "functions.inc.php";
+    require_once "auth.inc.php";
 
 
     if(emptyInputSignup ($username, $email, $password, $pwdrepeat) !== false) {

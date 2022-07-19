@@ -12,6 +12,7 @@ require_once "header.php";
     echo "<h1 data-aos='fade-up' class='text-primary'>Hello " . $_SESSION["Usernames"] . "</h1> ";
   } 
  
+  //  $data = getusename($_SESSION["Usernames"]);
 ?>
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
