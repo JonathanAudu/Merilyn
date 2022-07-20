@@ -132,9 +132,14 @@ function checkPassword($conn,$password) {
 
 function loginUser($conn, $username, $password) {
     session_start();
+    // add session data for id
     $_SESSION["Usernames"] = $username;    
     $_SESSION["Password"] = $password;  
     header("location: ../Main/index.php");
     exit();  
 
 }
+
+
+
+
