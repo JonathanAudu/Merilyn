@@ -30,7 +30,11 @@ $result = mysqli_query($conn, $stmt );
         if (!empty($row)):
           
       ?>
+<<<<<<< HEAD
           <div class="row">
+=======
+          <!-- <div class="row">
+>>>>>>> 7e6098ba4255aee706079c3e4fcd207e1a2d568a
             <div class="col-lg-4">
             
               <div class="card">
@@ -114,7 +118,11 @@ $result = mysqli_query($conn, $stmt );
               </div>
 
             </div>
+<<<<<<< HEAD
           </div>
+=======
+          </div> -->
+>>>>>>> 7e6098ba4255aee706079c3e4fcd207e1a2d568a
       <?php
        else:
       ?>
