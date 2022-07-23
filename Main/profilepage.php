@@ -11,8 +11,9 @@
 
 
 include "header.php";
-include_once "../Includes/dbh.inc.php";
-$stmt = "SELECT * FROM userprofile";
+include_once "../Includes/dbh.inc.php"; 
+$id = $_POST["id"];
+$stmt = "SELECT * FROM userdata WHERE `id` = 'user_id'";
 $result = mysqli_query($conn, $stmt );
 ?>
 
@@ -23,18 +24,11 @@ $result = mysqli_query($conn, $stmt );
       <?php 
         // mysqli_num_rows($result) ;
         
-        $row = mysqli_fetch_array($result);
+     if($result){
+      while($row = mysqli_fetch_array($result)){
 
-        // var_dump( $row);
-
-        if (!empty($row)):
-          
       ?>
-<<<<<<< HEAD
           <div class="row">
-=======
-          <!-- <div class="row">
->>>>>>> 7e6098ba4255aee706079c3e4fcd207e1a2d568a
             <div class="col-lg-4">
             
               <div class="card">
@@ -43,10 +37,10 @@ $result = mysqli_query($conn, $stmt );
                     
                       <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
                       <div class="mt-3">
-                        <h4><?php echo $row["first_name"] . $row["last_name"];?></h4>
+                        <h4><?php echo $row["first_name "] . $row[" last_name"];?></h4>
                         <p class="text-primary mb-1"><?php echo $row["description"]; ?></p>
-                        <p class="text-muted font-size-sm"><?php echo $row["user_address"]; ?></p>
-                        <p class="text-muted font-size-sm"><?php echo $row["Useremails"]; ?></p>
+                        <p class="text-muted font-size-sm"><?php echo $row["address"]; ?></p>
+                        <p class="text-muted font-size-sm"><?php echo $row["user_email"]; ?></p>
                       </div>
                   </div>
                   
@@ -86,7 +80,7 @@ $result = mysqli_query($conn, $stmt );
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo $row["Useremails"]; ?>
+                    <?php echo $row["user_email"]; ?>
                     </div>
                   </div>
                   <hr>
@@ -104,7 +98,7 @@ $result = mysqli_query($conn, $stmt );
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo $row["user_address"]; ?>
+                    <?php echo $row["address"]; ?>
                     </div>
                   </div>
                   <hr>
@@ -118,24 +112,24 @@ $result = mysqli_query($conn, $stmt );
               </div>
 
             </div>
-<<<<<<< HEAD
           </div>
-=======
-          </div> -->
->>>>>>> 7e6098ba4255aee706079c3e4fcd207e1a2d568a
       <?php
-       else:
+          
+          }
+        }else
       ?>
 
         <div>
-          <?php 
+          <?php
+          { 
           header("Location: updateprofile.php ");
           exit();
+        }
           ?>
         </div>
 
       <?php
-        endif
+       
       ?>
 
     </div>

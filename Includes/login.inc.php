@@ -18,7 +18,7 @@ if(isset($_POST["submit"])) {
 
        if (checkPassword($conn, $password) !== false) {
 
-            loginUser($conn, $username, $password);
+            loginUser($conn, $id, $username, $password);
 
        } else {
         header("location: ../Main/Login.php?error=wrongpassword");

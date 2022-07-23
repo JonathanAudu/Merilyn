@@ -39,7 +39,7 @@ function pwdMatch($password, $pwdrepeat)  {
 }
 
 function usernameExist($conn, $username, $email)  {
-    $sql = "SELECT * FROM users WHERE Usernames = ? OR Useremails = ?;";
+    $sql = "SELECT * FROM userdata WHERE username = ? OR user_email = ?;";
     $stmt = mysqli_stmt_init($conn);
     // if(mysqli_stmt_prepare($stmt, $sql)) {
     //     header("location: ../Main/SignUp.php?error=usernameoremailalreadyexist");
@@ -65,7 +65,7 @@ function usernameExist($conn, $username, $email)  {
 
 
 function createUser($conn, $username, $email, $password)  {
-    $sql = "INSERT INTO users (`Usernames`, `Useremails`, `Password` ) VALUES (?, ?, ?);";
+    $sql = "INSERT INTO userdata (`username`, `user_email`, `password` ) VALUES (?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     // if(mysqli_stmt_prepare($stmt, $sql)) {
     //     header("location: ../Main/SignUp.php?error=stmtfailed");
@@ -93,7 +93,7 @@ function emptyInputlogin ($username, $password) {
 }
 
 function checkUsername($conn,$username) {
-    $sql = "SELECT * FROM users WHERE Usernames = ?;";
+    $sql = "SELECT * FROM userdata WHERE username = ?;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
 
@@ -112,7 +112,7 @@ function checkUsername($conn,$username) {
     }
 
 function checkPassword($conn,$password) {
-    $sql = "SELECT * FROM users WHERE `Password` = ?;";
+    $sql = "SELECT * FROM userdata WHERE `password` = ?;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
 
@@ -130,11 +130,12 @@ function checkPassword($conn,$password) {
     return $result;
 }
 
-function loginUser($conn, $username, $password) {
+function loginUser($conn, $id, $username, $password) {
     session_start();
     // add session data for id
-    $_SESSION["Usernames"] = $username;    
-    $_SESSION["Password"] = $password;  
+    $_SESSION["user_id"] = $id;
+    $_SESSION["username"] = $username;    
+    $_SESSION["password"] = $password;  
     header("location: ../Main/index.php");
     exit();  
 

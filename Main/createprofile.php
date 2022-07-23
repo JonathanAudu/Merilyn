@@ -22,6 +22,9 @@
 include "header.php";
 include_once "../Includes/dbh.inc.php";
 
+
+
+
 ?>
 
 <form action="../Includes/updates.inc.php" method="post" enctype="multipart/form-data">
@@ -49,6 +52,11 @@ include_once "../Includes/dbh.inc.php";
 						<div class="col-lg-8">
 						<div class="card">
 							<div class="card-body">
+							<div class="row mb-3">
+								<div class="col-sm-9 text-secondary">
+									<input type="hidden" name="id" class="form-control" >
+								</div>
+								</div>
 								<div class="row mb-3">
 									<div class="col-sm-3">
 										<h6 class="mb-0">First Name</h6>
@@ -124,7 +132,7 @@ include_once "../Includes/dbh.inc.php";
 								<div class="row">
 									<div class="col-sm-3"></div>
 									<div class="col-sm-9 text-secondary">
-										<input type="submit" name="update" class="btn btn-primary" value="UPDATE PROFILE">
+										<input type="submit" name="update" class="btn btn-primary" value="CREATE PROFILE">
 									</div>
 								</div>
 							</div>
