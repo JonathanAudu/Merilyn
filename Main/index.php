@@ -7,9 +7,9 @@ require_once "header.php";
 
     <div class="container">
     <?php
-  if (isset($_SESSION["Usernames"])) {
+  if (isset($_SESSION["username"])) {
 
-    echo "<h1 data-aos='fade-up' class='text-primary'>Hello " . $_SESSION["Usernames"] . "</h1> ";
+    echo "<h1 data-aos='fade-up' class='text-primary'>Hello " . $_SESSION["username"] . "</h1> ";
   } 
  
   //  $data = getusename($_SESSION["Usernames"]);

@@ -122,7 +122,8 @@ $result = mysqli_query($conn, $stmt );
         <div>
           <?php
           { 
-          header("Location: updateprofile.php ");
+          header("Location: createprofile.php ");  
+          // commit
           exit();
         }
           ?>

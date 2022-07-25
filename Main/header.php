@@ -61,9 +61,9 @@ session_start();
           <li><h2><a class="nav-link scrollto active" href="index.php">HOME</a></h2></li>
           <li><h2><a class="nav-link scrollto" href="#about">ABOUT</a></h2></li>
 <?php
-  if (isset($_SESSION["Usernames"])) {
+  if (isset($_SESSION["username"])) {
 
-    echo "<li><h2><a href= 'profilepage.php' >" . strtoupper($_SESSION["Usernames"]) . "</a></h2></li>";
+    echo "<li><h2><a href= 'profilepage.php' >" . strtoupper($_SESSION["username"]) . "</a></h2></li>";
     echo "<li><h2><a href= 'logout.php' >LOG OUT</a></h2></li>";
   } 
   else {
