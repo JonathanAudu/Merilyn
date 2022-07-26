@@ -21,12 +21,36 @@
 
 include "header.php";
 include_once "../Includes/dbh.inc.php";
+if(isset($_POST["submit"])){
+	$id = $_POST["user_id"];
+	$username = $_POST["username"];
+	$usermail = $_POST["mail"];
+    $firstname = $_POST["fname"];
+    $lastname = $_POST["lname"];
+    $desc = $_POST["description"];
+    $pnumber = $_POST["phone"];
+    $Haddress = $_POST["address"];
+    $github = $_POST["github"];
+    $twitter = $_POST["twitter"];
+    $facebook = $_POST["facebook"];
+
+	$sql = "INSERT INTO `userdata`(`user_id`, `username`, `user_email`, `password`, `date`, `first_name`, `last_name`, `description`, `phone_num`, `address`, `git_account`, `facebook_account`, `twitter_account`) VALUES ('null','null','null', 'null' 'null' '$firstname','$lastname','$desc','$pnumber','$Haddress','$github','$twitter')";
+
+	$result = mysqli_query($conn, $sql);
+	if($result){
+		echo "successful";
+		header("location: profilepage.php");
+		exit();
+	}else{
+		echo "Failed:" . mysqli_error($conn);
+	}
 
 
+}
 
 ?>
 
-<form action="../Includes/createupdates.inc.php" method="post" enctype="multipart/form-data">
+<form action=" " method="post" enctype="multipart/form-data">
 
 	<section id="hero" class="hero d-flex align-items-center">
 		<div class="container">
@@ -51,6 +75,23 @@ include_once "../Includes/dbh.inc.php";
 						<div class="col-lg-8">
 						<div class="card">
 							<div class="card-body">
+								<div class="row mb-3">
+									<div class="col-sm-9 text-secondary">
+										<input type="hidden" name="user_id" class="form-control">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-9 text-secondary">
+										<input type="hidden" name="username" class="form-control">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-9 text-secondary">
+										<input type="hidden" name="mail" class="form-control">
+									</div>
+								</div>
+
+
 								<div class="row mb-3">
 									<div class="col-sm-3">
 										<h6 class="mb-0">First Name</h6>
@@ -126,7 +167,7 @@ include_once "../Includes/dbh.inc.php";
 								<div class="row">
 									<div class="col-sm-3"></div>
 									<div class="col-sm-9 text-secondary">
-										<input type="submit" name="insert" class="btn btn-primary" value="CREATE PROFILE">
+										<input type="submit" name="submit" class="btn btn-primary" value="CREATE PROFILE">
 									</div>
 								</div>
 							</div>
