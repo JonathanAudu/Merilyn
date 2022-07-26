@@ -21,10 +21,11 @@
 
 include "header.php";
 include_once "../Includes/dbh.inc.php";
+// $id = $_GET["user_id"];
+
 if(isset($_POST["submit"])){
-	$id = $_POST["user_id"];
-	$username = $_POST["username"];
-	$usermail = $_POST["mail"];
+	// $username = $_POST["username"];
+	// $usermail = $_POST["mail"];
     $firstname = $_POST["fname"];
     $lastname = $_POST["lname"];
     $desc = $_POST["description"];
@@ -34,7 +35,9 @@ if(isset($_POST["submit"])){
     $twitter = $_POST["twitter"];
     $facebook = $_POST["facebook"];
 
-	$sql = "INSERT INTO `userdata`(`user_id`, `username`, `user_email`, `password`, `date`, `first_name`, `last_name`, `description`, `phone_num`, `address`, `git_account`, `facebook_account`, `twitter_account`) VALUES ('null','null','null', 'null' 'null' '$firstname','$lastname','$desc','$pnumber','$Haddress','$github','$twitter')";
+	// $sql = "INSERT INTO `userdata`(`user_id`, `username`, `user_email`, `password`, `date`, `first_name`, `last_name`, `description`, `phone_num`, `address`, `git_account`, `facebook_account`, `twitter_account`) VALUES ('null','null','null', 'null', 'null', '$firstname', '$lastname', '$desc', '$pnumber', '$Haddress', '$github', '$facebook', '$twitter')";
+
+	$sql = "UPDATE `userdata` SET `first_name`='$firstname',`last_name`='$lastname',`description`='$desc',`phone_num`='$pnumber',`address`='$Haddress',`git_account`='$github',`facebook_account`='$facebook',`twitter_account`='$twitter'";
 
 	$result = mysqli_query($conn, $sql);
 	if($result){

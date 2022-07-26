@@ -12,22 +12,32 @@
 
 include "header.php";
 include_once "../Includes/dbh.inc.php"; 
-$id = $_POST["id"];
-$stmt = "SELECT * FROM userdata WHERE `id` = 'user_id'";
-$result = mysqli_query($conn, $stmt );
+
+$stmt = "SELECT * FROM `userdata`";
+$result = mysqli_query($conn, $stmt);
 ?>
 
 
 <section id="hero" class="hero d-flex align-items-center">
   <div class="container">
     <div class="main-body">
+    <?php
+      if(isset($_GET["msg"])){
+        $msg = $_GET["msg"];
+
+        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+               ' .$msg. '
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+              </div>";
+      }
+
+    ?>
+
+
       <?php 
         // mysqli_num_rows($result) ;
-        
-     if($result){
-      while($row = mysqli_fetch_array($result)){
-
-      ?>
+        while ($row = mysqli_fetch_assoc($result)){
+          ?>
           <div class="row">
             <div class="col-lg-4">
             
@@ -35,9 +45,10 @@ $result = mysqli_query($conn, $stmt );
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     
-                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="200">
                       <div class="mt-3">
-                        <h4><?php echo $row["first_name "] . $row[" last_name"];?></h4>
+                        <h4><?php echo $row["first_name"];?></h4>
+                        <h4><?php echo $row["last_name"]; ?></h4>
                         <p class="text-primary mb-1"><?php echo $row["description"]; ?></p>
                         <p class="text-muted font-size-sm"><?php echo $row["address"]; ?></p>
                         <p class="text-muted font-size-sm"><?php echo $row["user_email"]; ?></p>
@@ -104,7 +115,7 @@ $result = mysqli_query($conn, $stmt );
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn bg-primary text-center " href="updateprofile.php">EDIT</a>
+                      <a class="btn bg-primary text-center " href="createprofile.php?id=<?php echo $row['user_id'];?>">UPDATE</a>
                     </div>
                   </div>
                   
@@ -114,25 +125,10 @@ $result = mysqli_query($conn, $stmt );
             </div>
           </div>
       <?php
-          
           }
-        }else
       ?>
-
         <div>
-          <?php
-          { 
-          header("Location: createprofile.php ");  
-          // commit
-          exit();
-        }
-          ?>
         </div>
-
-      <?php
-       
-      ?>
-
     </div>
   </div>
 </section>
