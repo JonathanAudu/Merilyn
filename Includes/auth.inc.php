@@ -134,7 +134,7 @@ function loginUser($conn, $id, $username, $password) {
     session_start();
     // add session data for id
     $_SESSION["user_id"] = $id;
-    $_SESSION["username"] = $username;    
+    $_SESSION['username'] = $username;    
     $_SESSION["password"] = $password;  
     header("location: ../Main/index.php");
     exit();  

@@ -8,12 +8,11 @@
 // set var
 // sql select * from tbl where fullname != '' or phonenumber !=''
 // if sql header(loc:update) die()
-
-
 include "header.php";
 include_once "../Includes/dbh.inc.php"; 
-
-$stmt = "SELECT * FROM `userdata`";
+if(isset($_SESSION["username"]));
+$username = $_SESSION['username'];
+$stmt = "SELECT * FROM userdata WHERE username = '$username'";
 $result = mysqli_query($conn, $stmt);
 ?>
 

@@ -1,4 +1,7 @@
 <?php
+include "header.php";
+include_once "../Includes/dbh.inc.php";
+if(isset($_SESSION["username"]));
 
 //onload, you need previous profile data
 // set var as an empty array
@@ -19,41 +22,11 @@
 //if yes, run sql update, sql = update biodata set fullname = postdata where userid = sessionuserid
 // if no, run sql insert, sql = insert all data including userid as sessionuserid
 
-include "header.php";
-include_once "../Includes/dbh.inc.php";
+
 // $id = $_GET["user_id"];
-
-if(isset($_POST["submit"])){
-	// $username = $_POST["username"];
-	// $usermail = $_POST["mail"];
-    $firstname = $_POST["fname"];
-    $lastname = $_POST["lname"];
-    $desc = $_POST["description"];
-    $pnumber = $_POST["phone"];
-    $Haddress = $_POST["address"];
-    $github = $_POST["github"];
-    $twitter = $_POST["twitter"];
-    $facebook = $_POST["facebook"];
-
-	// $sql = "INSERT INTO `userdata`(`user_id`, `username`, `user_email`, `password`, `date`, `first_name`, `last_name`, `description`, `phone_num`, `address`, `git_account`, `facebook_account`, `twitter_account`) VALUES ('null','null','null', 'null', 'null', '$firstname', '$lastname', '$desc', '$pnumber', '$Haddress', '$github', '$facebook', '$twitter')";
-
-	$sql = "UPDATE `userdata` SET `first_name`='$firstname',`last_name`='$lastname',`description`='$desc',`phone_num`='$pnumber',`address`='$Haddress',`git_account`='$github',`facebook_account`='$facebook',`twitter_account`='$twitter'";
-
-	$result = mysqli_query($conn, $sql);
-	if($result){
-		echo "successful";
-		header("location: profilepage.php");
-		exit();
-	}else{
-		echo "Failed:" . mysqli_error($conn);
-	}
-
-
-}
-
 ?>
 
-<form action=" " method="post" enctype="multipart/form-data">
+<form action="../Includes/createupdates.inc.php " method="post" enctype="multipart/form-data">
 
 	<section id="hero" class="hero d-flex align-items-center">
 		<div class="container">
@@ -74,8 +47,7 @@ if(isset($_POST["submit"])){
 							</div>
 						</div>
 					</div>
-					<form action="../Includes/createupdates.inc.php" method="POST" enctype="multipart/form-data">
-						<div class="col-lg-8">
+					<div class="col-lg-8">
 						<div class="card">
 							<div class="card-body">
 								<div class="row mb-3">
@@ -175,8 +147,7 @@ if(isset($_POST["submit"])){
 								</div>
 							</div>
 						</div>
-						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
