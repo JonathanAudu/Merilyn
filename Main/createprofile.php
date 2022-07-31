@@ -2,6 +2,9 @@
 include "header.php";
 include_once "../Includes/dbh.inc.php";
 if(isset($_SESSION["username"]));
+$username = $_SESSION['username'];
+$stmt = "SELECT * FROM userdata WHERE username = '$username'";
+$result = mysqli_query($conn, $stmt);
 
 //onload, you need previous profile data
 // set var as an empty array
@@ -31,6 +34,10 @@ if(isset($_SESSION["username"]));
 	<section id="hero" class="hero d-flex align-items-center">
 		<div class="container">
 			<div class="main-body">
+			<?php 
+			// mysqli_num_rows($result) ;
+			while ($row = mysqli_fetch_assoc($result)){
+			?>
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="card">
@@ -38,10 +45,10 @@ if(isset($_SESSION["username"]));
 								<div class="d-flex flex-column align-items-center text-center">
 									<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
 									<div class="mt-3">
-										<h4>John Doe</h4>
-										<p class="text-primary mb-1" >Full Stack Developer</p>
-										<p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-										<p class="text-muted font-size-sm">Email</p>					
+										<h4> <?php echo strtoupper($row["username"]); ?> </h4>
+										<p class="text-primary mb-1" > <?php echo $row["description"]; ?> </p>
+										<p class="text-muted font-size-sm"> <?php echo $row["address"]; ?> </p>
+										<p class="text-muted font-size-sm"> <?php echo $row["user_email"]; ?> </p>					
 									</div>
 								</div>
 							</div>
@@ -50,23 +57,6 @@ if(isset($_SESSION["username"]));
 					<div class="col-lg-8">
 						<div class="card">
 							<div class="card-body">
-								<div class="row mb-3">
-									<div class="col-sm-9 text-secondary">
-										<input type="hidden" name="user_id" class="form-control">
-									</div>
-								</div>
-								<div class="row mb-3">
-									<div class="col-sm-9 text-secondary">
-										<input type="hidden" name="username" class="form-control">
-									</div>
-								</div>
-								<div class="row mb-3">
-									<div class="col-sm-9 text-secondary">
-										<input type="hidden" name="mail" class="form-control">
-									</div>
-								</div>
-
-
 								<div class="row mb-3">
 									<div class="col-sm-3">
 										<h6 class="mb-0">First Name</h6>
@@ -142,7 +132,7 @@ if(isset($_SESSION["username"]));
 								<div class="row">
 									<div class="col-sm-3"></div>
 									<div class="col-sm-9 text-secondary">
-										<input type="submit" name="submit" class="btn btn-primary" value="CREATE PROFILE">
+										<input type="submit" name="update" class="btn btn-primary" value="CREATE PROFILE">
 									</div>
 								</div>
 							</div>
@@ -150,6 +140,9 @@ if(isset($_SESSION["username"]));
 					</div>
 				</div>
 			</div>
+		<?php 
+			}
+		?>
 		</div>
 
 	</section>

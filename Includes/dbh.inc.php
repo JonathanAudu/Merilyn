@@ -3,8 +3,8 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpassword = "";
-// $dbname = "jonlee"; 
-$dbname = "intern_jon_lee";
+$dbname = "jonlee"; 
+// $dbname = "intern_jon_lee";
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 
