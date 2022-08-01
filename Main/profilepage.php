@@ -44,10 +44,9 @@ $result = mysqli_query($conn, $stmt);
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     
-                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="200">
+                      <img src="<?php echo $row["images"]; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="200">
                       <div class="mt-3">
-                        <h4><?php echo $row["first_name"];?></h4>
-                        <h4><?php echo $row["last_name"]; ?></h4>
+                        <h4><?php echo strtoupper($row["username"]);?></h4>
                         <p class="text-primary mb-1"><?php echo $row["description"]; ?></p>
                         <p class="text-muted font-size-sm"><?php echo $row["address"]; ?></p>
                         <p class="text-muted font-size-sm"><?php echo $row["user_email"]; ?></p>
@@ -82,6 +81,15 @@ $result = mysqli_query($conn, $stmt);
                     </div>
                     <div class="col-sm-9 text-secondary">
                     <?php echo $row["first_name"]; ?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $row["last_name"]; ?>
                     </div>
                   </div>
                   <hr>
