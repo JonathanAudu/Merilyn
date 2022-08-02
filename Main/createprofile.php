@@ -43,7 +43,11 @@ $result = mysqli_query($conn, $stmt);
 						<div class="card">
 							<div class="card-body">
 								<div class="d-flex flex-column align-items-center text-center">
+<<<<<<< HEAD
 									<img src="../upload/<?php echo $row['images']; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+=======
+									<img src="<?php echo $row["images"]; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+>>>>>>> a39b754b3b0bc3552f26ab6aab40e6db6215ab5e
 									<div class="mt-3">
 										<h4> <?php echo strtoupper($row["username"]); ?> </h4>
 										<p class="text-primary mb-1" > <?php echo $row["description"]; ?> </p>

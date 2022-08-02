@@ -44,7 +44,11 @@ $result = mysqli_query($conn, $stmt);
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     
+<<<<<<< HEAD
                       <img src="../upload/<?php echo $row['images']; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="200">
+=======
+                      <img src="<?php echo $row["images"]; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="200">
+>>>>>>> a39b754b3b0bc3552f26ab6aab40e6db6215ab5e
                       <div class="mt-3">
                         <h4><?php echo strtoupper($row["username"]);?></h4>
                         <p class="text-primary mb-1"><?php echo $row["description"]; ?></p>
@@ -81,6 +85,15 @@ $result = mysqli_query($conn, $stmt);
                     </div>
                     <div class="col-sm-9 text-secondary">
                     <?php echo $row["first_name"];?>  <?php echo $row[ "last_name"]; ?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $row["last_name"]; ?>
                     </div>
                   </div>
                   <hr>
