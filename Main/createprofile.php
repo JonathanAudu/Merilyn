@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $stmt);
 						<div class="card">
 							<div class="card-body">
 								<div class="d-flex flex-column align-items-center text-center">
-									<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+									<img src="../upload/<?php echo $row['images']; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
 									<div class="mt-3">
 										<h4> <?php echo strtoupper($row["username"]); ?> </h4>
 										<p class="text-primary mb-1" > <?php echo $row["description"]; ?> </p>
@@ -121,12 +121,29 @@ $result = mysqli_query($conn, $stmt);
 										<input type="text" name="facebook" class="form-control" placeholder="facebook.com">
 									</div>
 								</div>
+								<?php
+									if (isset($_GET["error"])) {
+										switch ($_GET["error"]) {
+											case "filetoolarge":
+												echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>File Too Large</p>";
+												break;
+
+											case "wrongfiles":
+												echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Only jpeg, jpg and png only</p>";
+												break;
+
+											case "none":
+												echo "<p class = 'text-primary text-center fw-bold mx-3 mb-0'></p>";
+												break;
+											}
+										}
+								?>
 								<div class="row mb-3">
 									<div class="col-sm-3">
 										<h6 class="mb-0"></h6>profile image
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="file" name="userimage" class="form-control" >
+										<input type="file" name="image" class="form-control" >
 									</div>
 								</div>
 								<div class="row">
