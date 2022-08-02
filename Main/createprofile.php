@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $stmt);
 						<div class="card">
 							<div class="card-body">
 								<div class="d-flex flex-column align-items-center text-center">
-									<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+									<img src="../upload/<?php echo $row['images']; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
 									<div class="mt-3">
 										<h4> <?php echo strtoupper($row["username"]); ?> </h4>
 										<p class="text-primary mb-1" > <?php echo $row["description"]; ?> </p>
@@ -62,7 +62,7 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0">First Name</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" name="fname" class="form-control" placeholder="First name" required>
+										<input type="text" name="fname" class="form-control" value="<?php echo $row["first_name"]; ?>" >
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -70,7 +70,7 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0">Last Name</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" name="lname" class="form-control" placeholder="Last Name" required>
+										<input type="text" name="lname" class="form-control" value="<?php echo $row["last_name"]; ?>">
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -78,7 +78,7 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0">Description</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-									<textarea class="form-control" name="description" rows="3" required></textarea>
+									<textarea class="form-control" name="description" rows="3" ><?php echo $row["description"]; ?></textarea>
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -86,7 +86,7 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0">Phone</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" name="phone" class="form-control" placeholder="(239) 816-9029" required>
+										<input type="text" name="phone" class="form-control" value="<?php echo $row["phone_num"]; ?>" >
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -94,7 +94,7 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0">Address</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" name="address" class="form-control" placeholder="Home address" required>
+										<input type="text" name="address" class="form-control" value="<?php echo $row["address"]; ?>" >
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -102,7 +102,7 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0">Github</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" name="github" class="form-control" placeholder="github.com">
+										<input type="text" name="github" class="form-control" value="<?php echo $row["git_account"]; ?>">
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -110,7 +110,7 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0">Twitter</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" name="twitter" class="form-control" placeholder="twitter.com">
+										<input type="text" name="twitter" class="form-control" value="<?php echo $row["twitter_account"]; ?>">
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -118,15 +118,32 @@ $result = mysqli_query($conn, $stmt);
 										<h6 class="mb-0"></h6>Facebook
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" name="facebook" class="form-control" placeholder="facebook.com">
+										<input type="text" name="facebook" class="form-control" value="<?php echo $row["facebook_account"]; ?>">
 									</div>
 								</div>
+								<?php
+									if (isset($_GET["error"])) {
+										switch ($_GET["error"]) {
+											case "filetoolarge":
+												echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>File Too Large</p>";
+												break;
+
+											case "wrongfiles":
+												echo "<p class = 'text-danger text-center fw-bold mx-3 mb-0'>Only jpeg, jpg and png only</p>";
+												break;
+
+											case "none":
+												echo "<p class = 'text-primary text-center fw-bold mx-3 mb-0'></p>";
+												break;
+											}
+										}
+								?>
 								<div class="row mb-3">
 									<div class="col-sm-3">
 										<h6 class="mb-0"></h6>profile image
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="file" name="userimage" class="form-control" >
+										<input type="file" name="image" class="form-control" >
 									</div>
 								</div>
 								<div class="row">
