@@ -130,12 +130,11 @@ function checkPassword($conn,$password) {
     return $result;
 }
 
-function loginUser($conn, $id, $username, $password) {
+function loginUser($id, $role) {
     session_start();
     // add session data for id
     $_SESSION["user_id"] = $id;
-    $_SESSION['username'] = $username;    
-    $_SESSION["password"] = $password;  
+    $_SESSION["user_role"] = $role;
     header("location: ../Main/index.php");
     exit();  
 

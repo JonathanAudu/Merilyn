@@ -17,10 +17,25 @@ if(isset($_POST["update"]) ){
     $img_tmp = $_FILES["image"]["tmp_name"];
     $folder ="../upload/";
     move_uploaded_file($img_tmp, $folder.$img_name);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71b049e5672d42c6effb32e80a15e361e938309d
    
    
    
     $stmt = "UPDATE userdata SET first_name= '$firstname', last_name ='$lastname', description ='$desc', phone_num ='$pnumber', address ='$Haddress', git_account ='$github', facebook_account ='$facebook', twitter_account ='$twitter', images = '$img_name' WHERE username = '$username' ";
+<<<<<<< HEAD
+=======
+=======
+    
+   
+   
+   
+   
+    $stmt = "UPDATE userdata SET first_name= '$firstname', last_name ='$lastname', description ='$desc', phone_num ='$pnumber', address ='$Haddress', git_account ='$github', facebook_account ='$facebook', twitter_account ='$twitter', images = '$new_image_name' WHERE username = '$username' ";
+>>>>>>> a39b754b3b0bc3552f26ab6aab40e6db6215ab5e
+>>>>>>> 71b049e5672d42c6effb32e80a15e361e938309d
     $result = mysqli_query($conn, $stmt);
    
     if($result){
